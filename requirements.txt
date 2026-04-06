@@ -1,0 +1,6 @@
+anthropic
+streamlit
+python-dotenv
+chromadb
+datasets
+pandas
