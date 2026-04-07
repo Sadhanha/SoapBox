@@ -1,4 +1,4 @@
-#SoapBox — AI Clinical Scribe Agent
+# SoapBox — AI Clinical Scribe Agent
 
 Converts doctor-patient transcripts into structured SOAP notes
 using an agentic RAG pipeline.
