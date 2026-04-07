@@ -271,4 +271,11 @@ After calling all 3 tools, stop. Do not write anything else."""
         "content": soap_note
     })
 
+    from evaluate_note import evaluate_note
+    evaluation = evaluate_note(transcript, soap_note)
+    steps.append({
+        "type": "evaluation",
+        "content": evaluation
+    })
+
     return steps
