@@ -84,3 +84,4 @@ def retrieve_similar_notes(query: str, n_results: int = 3):
 if __name__ == "__main__":
     test_query = "Patient has neck pain and difficulty walking"
     retrieve_similar_notes(test_query)
+
