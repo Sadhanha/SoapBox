@@ -8,7 +8,7 @@
 
 Physicians spend an average of **2+ hours on documentation for every hour of patient care**. For a practice seeing 65+ patients a day, that's an unsustainable administrative burden — and it directly impacts the quality of care.
 
-Soapbox is built to fix that.
+SoapBox is built to fix that.
 
 ---
 
@@ -63,7 +63,7 @@ For a practice seeing **65+ patients per day:**
 | Daily documentation time | ~16 hrs | ~2 hrs |
 | Time saved per day | — | **~14 hours** |
 
-That's 14 hours returned to direct patient care — every single day.
+That's 14 hours returned to direct patient care every day!
 
 ---
 
@@ -71,6 +71,5 @@ That's 14 hours returned to direct patient care — every single day.
 
 - **Direct audio input** — integrate speech-to-text so providers can speak directly into the app, eliminating the paste step entirely and creating a fully automated transcription-to-SOAP workflow
 - **EHR integration** — connect directly with EPIC or other EHR systems to pull patient context automatically and push finalized notes back without manual entry
-- **Multi-provider support** — extend the app to support multiple providers with role-based access and note history
 - **Fine-tuned evaluation model** — replace the general-purpose LLM evaluator with a model fine-tuned specifically on clinical documentation standards (e.g. trained on SOAP note rubrics used in medical education)
 - **Latency optimization** — parallelize the RAG retrieval and generation steps to reduce end-to-end response time for high-volume practices
