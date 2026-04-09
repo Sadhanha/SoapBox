@@ -1,6 +1,6 @@
 # Soapbox — Clinical AI Scribe Agent
 
-> Automating clinical documentation so providers can focus on what matters most: their patients.
+Automating clinical documentation so providers can focus on what matters most: their patients.
 
 ---
 
