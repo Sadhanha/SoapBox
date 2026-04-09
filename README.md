@@ -1,78 +1,76 @@
-# SoapBox — AI Clinical Scribe Agent
+# Soapbox — Clinical AI Scribe Agent
 
-Converts doctor-patient transcripts into structured SOAP notes
-using an agentic RAG pipeline.
-
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![Streamlit](https://img.shields.io/badge/Streamlit-red)
-![Claude](https://img.shields.io/badge/Claude-Sonnet_4-green)
+> Automating clinical documentation so providers can focus on what matters most: their patients.
 
 ---
 
-## Demo
-[Live Demo](#) · [LinkedIn Post](#)
+## The Problem
+
+Physicians spend an average of **2+ hours on documentation for every hour of patient care**. For a practice seeing 65+ patients a day, that's an unsustainable administrative burden — and it directly impacts the quality of care.
+
+Soapbox is built to fix that.
 
 ---
 
-## What it does
-Physicians spend nearly 2 hours on documentation for every 1 hour
-of patient care. SoapBox automates the most time-consuming part —
-turning raw visit transcripts into structured, billable SOAP notes
-in seconds.
+## What It Does
+
+Soapbox is an AI-powered clinical scribe that converts provider transcriptions into structured, reviewable SOAP notes — with built-in LLM evaluation to validate quality, completeness, and clinical accuracy before sign-off.
+
+**Workflow:**
+1. Provider pastes transcribed clinical notes into the app
+2. A RAG pipeline retrieves relevant context from 143 clinical notes
+3. Claude API converts the transcription into a structured SOAP note
+4. A second LLM call (LLM-as-judge) evaluates the note on quality, completeness, and accuracy
+5. Scores are displayed on a real-time dashboard — provider reviews any flagged areas and signs off
 
 ---
 
 ## Architecture
-![Architecture](arch.png)
 
----
-
-## Evaluation Results
-
-| Metric | Score |
-|---|---|
-| LLM Quality Score | 9.67 / 10 |
-| Semantic Similarity | 0.81 |
-| Field Coverage | 100% |
-| Cases Evaluated | 3 / 3 |
+![Soapbox Architecture](soapbox_architecture.svg)
 
 ---
 
 ## Tech Stack
-- Claude Sonnet 4 — LLM + tool calling
-- ChromaDB — vector database
-- Sentence Transformers — embeddings
-- HuggingFace Datasets — clinical notes corpus
-- Streamlit — frontend
+
+| Layer | Technology |
+|---|---|
+| Frontend | Streamlit |
+| LLM | Claude API (Anthropic) |
+| Retrieval | RAG Pipeline — 143 clinical notes |
+| Embeddings | Hugging Face |
+| Language | Python |
 
 ---
 
-## Run Locally
-```bash
-git clone https://github.com/Sadhanha/SoapBox.git
-cd SoapBox
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-echo "ANTHROPIC_API_KEY=your_key" > .env
-python vector_store.py
-streamlit run app.py
-```
+## Key Features
+
+- **SOAP note generation** from pasted clinical transcriptions
+- **RAG-grounded responses** using a real clinical note corpus — reduces hallucination and improves clinical relevance
+- **LLM-as-judge evaluation** — a second model call scores the generated note on quality, completeness, and accuracy
+- **Real-time evaluation dashboard** — providers see scores at a glance and know exactly what to review
+- **Clean provider-facing UI** built with Streamlit
 
 ---
 
-## Run Evaluation
-```bash
-python evaluate.py
-```
+## Projected Impact
+
+For a practice seeing **65+ patients per day:**
+
+| Metric | Without Soapbox | With Soapbox |
+|---|---|---|
+| Documentation per patient | ~15–20 min | ~2–3 min (review only) |
+| Daily documentation time | ~16 hrs | ~2 hrs |
+| Time saved per day | — | **~14 hours** |
+
+That's 14 hours returned to direct patient care — every single day.
 
 ---
 
-## Project Structure
-```
-├── app.py             # Streamlit UI
-├── agent.py           # Agent loop + tools
-├── vector_store.py    # ChromaDB + RAG
-├── soap_generator.py  # SOAP generation
-├── evaluate.py        # Evaluation framework
-└── requirements.txt
-```
+## What's Next
+
+- **Direct audio input** — integrate speech-to-text so providers can speak directly into the app, eliminating the paste step entirely and creating a fully automated transcription-to-SOAP workflow
+- **EHR integration** — connect directly with EPIC or other EHR systems to pull patient context automatically and push finalized notes back without manual entry
+- **Multi-provider support** — extend the app to support multiple providers with role-based access and note history
+- **Fine-tuned evaluation model** — replace the general-purpose LLM evaluator with a model fine-tuned specifically on clinical documentation standards (e.g. trained on SOAP note rubrics used in medical education)
+- **Latency optimization** — parallelize the RAG retrieval and generation steps to reduce end-to-end response time for high-volume practices
